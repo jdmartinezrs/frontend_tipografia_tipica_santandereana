@@ -1,0 +1,60 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class="flex flex-col gap-4" novalidate>
+  <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+    <app-form-field id="firstName" label="Nombres" placeholder="Ej: María Camila"
+      autocomplete="given-name" [control]="form.controls.firstName" />
+    <app-form-field id="lastName" label="Apellidos" placeholder="Ej: Rodríguez Gómez"
+      autocomplete="family-name" [control]="form.controls.lastName" />
+    <app-form-field id="email" label="Correo electrónico" type="email"
+      placeholder="tucorreo@gmail.com" autocomplete="email" [control]="form.controls.email" />
+    <app-form-field id="username" label="Username" placeholder="Elige tu usuario"
+      autocomplete="username" [control]="form.controls.username" />
+  </div>
+
+  <div class="flex flex-col gap-1.5">
+    <label for="phone" class="text-sm font-semibold text-[#2a1a05]">Teléfono</label>
+    <div class="flex items-start gap-2.5">
+      <app-select-field class="block w-32 shrink-0" id="dialCode" ariaLabel="Indicativo del país"
+        [control]="form.controls.dialCode" [options]="dialOptions" />
+      <app-form-field class="block min-w-0 flex-1" id="phone" type="tel"
+        placeholder="300 000 0000" autocomplete="tel-national" [control]="form.controls.phone" />
+    </div>
+  </div>
+
+  <div class="grid grid-cols-1 gap-4 sm:grid-cols-3">
+    <app-select-field id="country" label="País" placeholder="Selecciona tu país"
+      [control]="form.controls.country" [options]="countryOptions" />
+    <app-select-field id="department" label="Departamento" placeholder="Selecciona"
+      [control]="form.controls.department" [options]="departmentOptions()" />
+    <app-select-field id="city" label="Ciudad" placeholder="Selecciona"
+      [control]="form.controls.city" [options]="cityOptions()" />
+  </div>
+
+  <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+    <app-form-field id="password" label="Contraseña" type="password"
+      placeholder="Mínimo 8 caracteres" autocomplete="new-password"
+      [control]="form.controls.password" />
+    <app-form-field id="confirmPassword" label="Confirmar contraseña" type="password"
+      placeholder="Repite tu contraseña" autocomplete="new-password"
+      [control]="form.controls.confirmPassword" />
+  </div>
+
+  <div>
+    <label class="flex items-start gap-2.5 text-sm text-[#2a1a05]">
+      <input type="checkbox" formControlName="terms" class="mt-0.5 size-5 shrink-0" />
+      <span>Acepto los términos y condiciones y la política de privacidad.</span>
+    </label>
+    @if (form.controls.terms.touched && form.controls.terms.invalid) {
+      <span role="alert" class="text-xs font-medium text-[#7a1f1f]">
+        Debes aceptar los términos para continuar
+      </span>
+    }
+  </div>
+
+  <div class="mt-2 flex flex-col items-center gap-3.5">
+    <app-button type="submit">Registrarse</app-button>
+    <p class="text-sm text-[#2a1a05]">
+      ¿Ya tienes cuenta?
+      <a routerLink="/auth/login" class="font-semibold text-[#2b1b3d] hover:underline">Inicia sesión</a>
+    </p>
+  </div>
+</form>

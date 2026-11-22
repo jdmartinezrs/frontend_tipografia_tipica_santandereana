@@ -1,5 +1,7 @@
 <div class="flex min-w-0 flex-col gap-1.5">
-  <label [for]="id()" class="text-sm font-semibold text-[#2a1a05]">{{ label() }}</label>
+  @if (label()) {
+    <label [for]="id()" class="text-sm font-semibold text-[#2a1a05]">{{ label() }}</label>
+  }
   <input
     [id]="id()"
     [type]="type()"

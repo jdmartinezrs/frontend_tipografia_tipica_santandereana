@@ -1,5 +1,6 @@
 import { Component, input } from '@angular/core';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
+import { formError } from '../../utils/form-errors';
 
 @Component({
   selector: 'app-form-field',
@@ -8,24 +9,16 @@ import { FormControl, ReactiveFormsModule } from '@angular/forms';
 })
 export class FormField {
   id = input.required<string>();
-  label = input.required<string>();
+  label = input('');
   control = input.required<FormControl<string>>();
   type = input<'text' | 'password' | 'email' | 'tel'>('text');
   placeholder = input('');
   autocomplete = input('off');
 
-  get showError(): boolean {
+  get showError() {
     return this.control().touched && this.control().invalid;
   }
-
-  get message(): string {
-    const errors = this.control().errors;
-    if (!errors) return '';
-    if (errors['required']) return 'Este campo es obligatorio';
-    if (errors['email']) return 'Ingresa un correo válido';
-    if (errors['minlength']) {
-      return `Mínimo ${errors['minlength'].requiredLength} caracteres`;
-    }
-    return 'Valor no válido';
+  get message() {
+    return formError(this.control());
   }
 }
