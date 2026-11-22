@@ -1,0 +1,35 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class="flex flex-col gap-[18px]">
+  <app-form-field
+    id="username"
+    label="Username"
+    placeholder="Tu username aquí"
+    autocomplete="username"
+    [control]="form.controls.username"
+  />
+  <app-form-field
+    id="password"
+    label="Contraseña"
+    type="password"
+    placeholder="Tu contraseña"
+    autocomplete="current-password"
+    [control]="form.controls.password"
+  />
+
+  <div class="flex flex-wrap items-center justify-between gap-3">
+    <label class="flex items-center gap-2 text-sm text-[#2a1a05]">
+      <input type="checkbox" formControlName="remember" class="size-5" />
+      Recordarme
+    </label>
+    <button type="button" class="text-sm font-semibold text-[#2b1b3d] hover:underline">
+      ¿Olvidaste tu contraseña?
+    </button>
+  </div>
+
+  <div class="mt-4 flex flex-col items-center gap-3.5">
+    <app-button type="submit">Entrar</app-button>
+    <p class="text-sm text-[#2a1a05]">
+      ¿Aún no tienes cuenta?
+      <a routerLink="/auth/register" class="font-semibold text-[#2b1b3d] hover:underline">Crear cuenta</a>
+    </p>
+  </div>
+</form>

@@ -2,6 +2,72 @@
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 22.2.7.
 
+## Project structure
+
+```
+├── public/                        # Archivos estáticos servidos en la raíz
+│   └── images/
+│       ├── backgrounds/           # Fondos de la app (aside, auth)
+│       ├── brand/                 # Logos (aside, auth)
+│       └── icons/                 # Iconos
+│
+├── src/
+│   ├── app/                       # Código de la aplicación Angular
+│   │   ├── core/                  # Núcleo transversal
+│   │   │   ├── guards/            # Guards de rutas
+│   │   │   ├── interceptors/      # Interceptores HTTP
+│   │   │   └── services/          # Servicios core
+│   │   │
+│   │   ├── features/              # Módulos por funcionalidad
+│   │   │   ├── artists/           # Artistas
+│   │   │   │   ├── components/
+│   │   │   │   ├── models/
+│   │   │   │   ├── pages/
+│   │   │   │   ├── services/
+│   │   │   │   └── artists.routes.ts
+│   │   │   ├── auth/              # Autenticación
+│   │   │   │   ├── components/
+│   │   │   │   ├── models/
+│   │   │   │   ├── pages/
+│   │   │   │   ├── services/
+│   │   │   │   └── auth.routes.ts
+│   │   │   ├── cart/              # Carrito
+│   │   │   │   ├── components/
+│   │   │   │   ├── models/
+│   │   │   │   ├── pages/
+│   │   │   │   ├── services/
+│   │   │   │   └── cart.routes.ts
+│   │   │   └── fonts/             # Tipografías
+│   │   │       ├── components/
+│   │   │       ├── models/
+│   │   │       ├── pages/
+│   │   │       ├── services/
+│   │   │       └── fonts.routes.ts
+│   │   │
+│   │   ├── layouts/               # Layouts de la aplicación
+│   │   │   ├── auth-layout/
+│   │   │   └── main-layout/
+│   │   │
+│   │   ├── shared/                # Código reutilizable
+│   │   │   ├── components/
+│   │   │   ├── directives/
+│   │   │   └── pipes/
+│   │   │
+│   │   ├── app.config.ts          # Configuración de la app
+│   │   ├── app.routes.ts          # Rutas principales
+│   │   ├── app.ts / app.html / app.css
+│   │   └── app.spec.ts
+│   │
+│   ├── environments/              # Variables de entorno
+│   ├── index.html                 # HTML principal (incluye Google Fonts)
+│   ├── main.ts                    # Punto de entrada
+│   └── styles.css                 # Estilos globales (Tailwind)
+│
+├── angular.json                   # Configuración de Angular CLI
+├── package.json
+└── README.md
+```
+
 ## Development server
 
 To start a local development server, run:

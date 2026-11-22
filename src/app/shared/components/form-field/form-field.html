@@ -1,0 +1,18 @@
+<div class="flex min-w-0 flex-col gap-1.5">
+  <label [for]="id()" class="text-sm font-semibold text-[#2a1a05]">{{ label() }}</label>
+  <input
+    [id]="id()"
+    [type]="type()"
+    [formControl]="control()"
+    [placeholder]="placeholder()"
+    [autocomplete]="autocomplete()"
+    [attr.aria-invalid]="showError ? true : null"
+    [attr.aria-describedby]="showError ? id() + '-error' : null"
+    class="h-12 w-full rounded-[14px] border-2 border-transparent bg-white px-4 text-[15px] text-[#2b2b2b] shadow-md placeholder:text-[#6b6b6b] focus:border-[#2b1b3d] focus:outline-none"
+  />
+  @if (showError) {
+    <span [id]="id() + '-error'" role="alert" class="text-xs font-medium text-[#7a1f1f]">
+      {{ message }}
+    </span>
+  }
+</div>
