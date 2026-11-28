@@ -20,15 +20,6 @@
     </div>
   </div>
 
-  <div class="grid grid-cols-1 gap-4 sm:grid-cols-3">
-    <app-select-field id="country" label="País" placeholder="Selecciona tu país"
-      [control]="form.controls.country" [options]="countryOptions" />
-    <app-select-field id="department" label="Departamento" placeholder="Selecciona"
-      [control]="form.controls.department" [options]="departmentOptions()" />
-    <app-select-field id="city" label="Ciudad" placeholder="Selecciona"
-      [control]="form.controls.city" [options]="cityOptions()" />
-  </div>
-
   <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
     <app-form-field id="password" label="Contraseña" type="password"
       placeholder="Mínimo 8 caracteres" autocomplete="new-password"
@@ -38,20 +29,8 @@
       [control]="form.controls.confirmPassword" />
   </div>
 
-  <div>
-    <label class="flex items-start gap-2.5 text-sm text-[#2a1a05]">
-      <input type="checkbox" formControlName="terms" class="mt-0.5 size-5 shrink-0" />
-      <span>Acepto los términos y condiciones y la política de privacidad.</span>
-    </label>
-    @if (form.controls.terms.touched && form.controls.terms.invalid) {
-      <span role="alert" class="text-xs font-medium text-[#7a1f1f]">
-        Debes aceptar los términos para continuar
-      </span>
-    }
-  </div>
-
   <div class="mt-2 flex flex-col items-center gap-3.5">
-    <app-button type="submit">Registrarse</app-button>
+    <app-button type="submit" [disabled]="submitting()">{{ submitting() ? 'Registrando…' : 'Registrarse' }}</app-button>
     <p class="text-sm text-[#2a1a05]">
       ¿Ya tienes cuenta?
       <a routerLink="/auth/login" class="font-semibold text-[#2b1b3d] hover:underline">Inicia sesión</a>
